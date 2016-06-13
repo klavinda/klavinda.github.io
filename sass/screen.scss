@@ -1,0 +1,377 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url("../fonts/OpenSans-regulat.ttf");
+	font-weight: 400;
+	font-style: normal;
+	}
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url("../fonts/OpenSans-semibold.ttf");
+	font-weight: 600;
+	font-style: normal;
+	}	
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url("../fonts/OpenSans-bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+	}	
+
+/* VARIABLES*/
+
+$font-stack: 'Open Sans', sans-serif;
+$primary-color: #4e4e4e;
+$secondary-color: #ffffff;
+$hydric-color: #7d7b7b;
+$hydric-lite: #afacac;
+$contrast-color: #b38e48;
+$contrast-color-2: #71ae5a;
+$background-color_section_2: #2b342b;
+$background-color_plans: #e9ede9;
+
+
+/* MIXINS */
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin gradient {
+	 background: rgb(77,124,79); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, rgba(77,124,79,1) 0%, rgba(55,91,56,1) 72%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(77,124,79,1) 0%,rgba(55,91,56,1) 72%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(77,124,79,1) 0%,rgba(55,91,56,1) 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d7c4f', endColorstr='#375b38',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+@mixin text-align {
+	font-family: $font-stack;
+	text-align: center;
+}
+@mixin font-weight-400 {
+	font-weight: 400;
+}
+@mixin semibold_secondary {
+	color: $secondary-color;
+	font-size: 16px;
+	font-weight: 600;
+	font-family: $font-stack;
+}   /* текст меню */
+@mixin h1-text-light{
+	color: $secondary-color;
+	font-size: 34px;
+	@include text-align;	
+} /* текст заголовков светлый*/
+@mixin h1-text-dark{
+	color: $primary-color;
+	font-size: 34px;
+	@include font-weight-400;
+	@include text-align;
+} /* текст заголовков темный*/
+@mixin text-dark{
+	color: $primary-color;
+	font-size: 17px;
+	@include font-weight-400;
+	@include text-align;
+	line-height: 1.4;
+} /* текст  подзаголовок темный*/
+@mixin text-light{
+	color: $secondary-color;
+	font-size: 17px;
+	@include font-weight-400;
+	@include text-align;
+	line-height: 1.4;
+} /* текст  подзаголовок светлы*/
+@mixin price{
+	color: $hydric-color;
+	font-size: 36px;
+	font-weight: 600;
+	@include text-align;
+	line-height: 90px;
+}
+@mixin price-lite{
+	color: $hydric-lite;
+	font-size: 36px;
+	@include font-weight-400;
+	@include text-align;
+	line-height: 90px;
+} /* текст  подзаголовок светлы*/
+@mixin pad-top-100 {
+	padding-top: 100px;
+}
+@mixin pad-bottom-100 {
+	padding-bottom: 100px;
+}
+@mixin banner {
+	width: 500px / 980px * 100%;
+	margin: 0 auto;
+	text-align: center;
+	@include pad-bottom-100;
+	@include pad-top-100;
+}
+@mixin grey-figure {
+	-webkit-filter: grayscale(50%);
+		&:hover {
+			 -webkit-filter: none;
+		}
+}
+@mixin media-fulllength-center {
+	width: 100%;
+	margin: 0 auto;
+	float: none;
+	text-align: center;
+}
+
+.container {
+	margin: 0 auto;
+	width: 980px;
+	display: block;
+	@include clearfix;
+}
+
+/* HEADER & NAVBAR*/
+
+.header {
+	@include gradient;
+	/* height: 700px; */
+}
+
+.navbar {
+	padding-top: 35px;
+	@include clearfix;
+	.header_logo {
+		float: left;
+		width: 160px / 980px * 100%;
+		@include grey-figure;
+	}
+	.menu {
+		float: right;
+		width: 660px /  980px * 100%;
+		text-align: right;
+	
+		a {
+			line-height: 40px;
+			text-decoration: none;
+			border: 3px solid transparent;
+			padding: 11px 14px 8px 14px; 
+			@include semibold_secondary;
+			&:hover {
+				border: 3px solid $secondary-color;
+				padding: 11px 14px 8px 14px;
+			}
+		}
+	}
+}
+
+.banner {
+	@include banner;
+
+	figure {
+		padding-top: 20px;
+		@include grey-figure;
+	}
+	h1 {
+		@include h1-text-light;
+	}
+}
+.banner_1 {
+	@include banner;
+	
+	figure {
+		padding-top: 50px;
+		@include grey-figure;
+	}
+	p {
+		width: 80%;
+		margin: 0 auto;
+		padding-top: 20px;
+		@include text-dark;
+	}
+
+	h1 {
+		@include h1-text-dark;
+	}
+}
+
+.section_2 {
+	background-color: $background-color_section_2;
+}
+.banner_2 {
+	@include banner;
+
+	figure {
+		padding-top: 50px;
+		@include grey-figure;
+	}
+	h1 {
+		@include h1-text-light;
+	}
+	p {
+		width: 60%;
+		margin: 0 auto;
+		padding-top: 20px;
+		@include text-light;
+	}
+}
+
+.plans .bottom {
+	background-color: $background-color_plans;
+	height: 100%;
+	@include pad-bottom-100;
+	@include clearfix
+}
+.hydric {
+	background-color: #e2e4e1;
+	width: 32%;
+	margin-left: 5px;
+	margin-right: 5px;
+	float: left;
+	text-align: center;
+	padding-bottom: 40px;
+	@include clearfix;
+	
+	.starting {
+		@include price-lite;
+		color: $primary-color;
+		font-size: 30px;
+		line-height: 20px;
+		padding-bottom: 20px;
+	}
+	.price {
+		@include price-lite;
+		color: $contrast-color;
+		font-size: 30px;
+		line-height: 20px;
+		padding-bottom: 20px;
+	}
+	h2 {
+		@include price;
+	}
+		span {
+			@include price-lite;
+		}
+	button {
+		background-color: $contrast-color-2;
+		@include price-lite;
+		color: $secondary-color;
+		width: 113px;
+		line-height: 37px;
+		font-size: 15px;
+		border-radius: 6px;
+		border: none;
+
+	}
+}
+
+
+.small-menu {
+	float: left;
+	width: 500px /  980px * 100%;
+	text-align: left;
+	@include pad-top-100;
+	@include pad-bottom-100;
+
+	a {
+		color: $primary-color;
+		font-family: $font-stack;
+		font-weight: 600;
+		font-size: 13px;
+		line-height: 30px;
+		text-decoration: none;
+		border: 3px solid transparent;
+		padding: 0px 14px 14px 0px; 
+	}
+	p {
+		color: $primary-color;
+		font-family: $font-stack;
+		font-weight:  400;
+		font-size: 13px;
+	}
+}
+
+.footer .container {
+	position: relative;
+}
+.to-the-top-button {
+	position: absolute;
+	right: 10px;	
+	top: 50%;
+	margin-top: -20px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: $contrast-color-2;
+	.triangle {
+		width: 0;
+		height: 0;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		border-bottom: 16px solid white;
+		margin: 14px auto;
+	}
+}
+
+
+
+
+@media only screen and (max-width : 980px) {
+
+	.container {
+		width: 100%;
+	}
+
+	.navbar{
+		.header_logo  {
+			@include media-fulllength-center;
+			margin-bottom: 20px;
+		}
+		.menu {
+			@include media-fulllength-center;
+		}
+	}
+
+	.banner, .banner_1, .banner_2, .hydric {
+		width: 100%;
+		@include media-fulllength-center;
+	}
+
+	.banner_2 figure img {
+		width: 80%;
+	}
+
+	.hydric {
+		margin-bottom: 10px;
+	}
+
+	.footer .container {
+		.small-menu {
+			width: 80% !important;
+			position: static !important;
+			@include media-fulllength-center;
+			@include clearfix;
+			p {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	.to-the-top-button {
+		position: relative;
+		margin: -60px auto 30px;
+		.triangle {
+			position: absolute;
+			top: 0;
+			left: 12px;
+		}
+	}
+
+
+}
